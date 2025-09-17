@@ -1,0 +1,64 @@
+{
+  "info": {
+    "name": "Scheduler_Demo",
+    "_postman_id": "b3d6f5e8-0000-4a7b-9e2f-PLACEHOLDER",
+    "description": "Postman collection for creating and verifying scheduled posts on a Facebook Page (demo). Replace environment variables before running.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create scheduled photo",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {"key":"url","value":"https://cdn.example.com/sample.jpg","type":"text"},
+            {"key":"caption","value":"Test scheduled post from demo","type":"text"},
+            {"key":"published","value":"false","type":"text"},
+            {"key":"scheduled_publish_time","value":"{{SCHEDULED_TIMESTAMP}}","type":"text"},
+            {"key":"access_token","value":"{{PAGE_ACCESS_TOKEN}}","type":"text"}
+          ]
+        },
+        "url": {
+          "raw": "https://graph.facebook.com/v17.0/{{PAGE_ID}}/photos",
+          "protocol": "https",
+          "host": ["graph","facebook","com"],
+          "path": ["v17.0","{{PAGE_ID}}","photos"]
+        },
+        "description": "Creates a scheduled photo post on the Page. Returns an id for the scheduled post."
+      }
+    },
+    {
+      "name": "Get scheduled post",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://graph.facebook.com/v17.0/{{SCHEDULED_POST_ID}}?access_token={{PAGE_ACCESS_TOKEN}}",
+          "protocol": "https",
+          "host": ["graph","facebook","com"],
+          "path": ["v17.0","{{SCHEDULED_POST_ID}}"],
+          "query": [{"key":"access_token","value":"{{PAGE_ACCESS_TOKEN}}"}]
+        },
+        "description": "Retrieves a scheduled post by id returned from the Create request."
+      }
+    },
+    {
+      "name": "List scheduled posts for Page",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://graph.facebook.com/v17.0/{{PAGE_ID}}/scheduled_posts?access_token={{PAGE_ACCESS_TOKEN}}",
+          "protocol": "https",
+          "host": ["graph","facebook","com"],
+          "path": ["v17.0","{{PAGE_ID}}","scheduled_posts"],
+          "query": [{"key":"access_token","value":"{{PAGE_ACCESS_TOKEN}}"}]
+        },
+        "description": "Lists scheduled posts for the Page."
+      }
+    }
+  ]
+}
