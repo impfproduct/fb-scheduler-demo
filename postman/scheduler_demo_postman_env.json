@@ -1,0 +1,11 @@
+{
+  "id": "scheduler-demo-env",
+  "name": "Scheduler Demo",
+  "values": [
+    {"key":"PAGE_ID","value":"123456789012345","enabled":true},
+    {"key":"PAGE_ACCESS_TOKEN","value":"REPLACE_WITH_TEST_PAGE_ACCESS_TOKEN","enabled":true},
+    {"key":"SCHEDULED_TIMESTAMP","value":"REPLACE_WITH_UNIX_TIMESTAMP","enabled":true},
+    {"key":"SCHEDULED_POST_ID","value":"REPLACE_WITH_SCHEDULED_POST_ID","enabled":true}
+  ],
+  "_postman_variable_scope": "environment"
+}
